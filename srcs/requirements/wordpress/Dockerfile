@@ -7,8 +7,20 @@ RUN apt -y update && apt -y upgrade && apt-get -y install php7.3-fpm \
     unzip \
     curl
 
-RUN curl -LO https://wordpress.org/latest.zip && unzip latest.zip
+RUN mkdir -p /run/php
 
-RUN mv wordpress /var/www
+RUN curl -LO https://wordpress.org/latest.zip && unzip -d /var/www latest.zip
+
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+
+COPY ./conf/script.sh /etc/
 
 EXPOSE 9000
+
+ENTRYPOINT /etc/script.sh
+
+CMD ["bash"]
