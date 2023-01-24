@@ -1,6 +1,6 @@
 FROM debian:buster
 
-RUN apt -y update && apt -y upgrade && apt-get -y install php7.3-fpm \
+RUN apt -y update && apt-get -y install php7.3-fpm \
     php7.3-common \
     php7.3-mysql \
     mariadb-client \

@@ -2,19 +2,19 @@
 
 service mysql start;
 
-create database
+#create database
 mysql -e "CREATE DATABASE IF NOT EXISTS ${SQL_DATABASE};"
 
-create admin user
+#create admin user
 mysql -e "CREATE USER '${SQL_ADMIN}'@'%' IDENTIFIED BY '${SQL_ADMIN_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${SQL_ADMIN}'@'%';"
-refresh
+#refresh
 mysql -e "FLUSH PRIVILEGES;"
 
-create user
+#create user
 mysql -e "CREATE USER '${SQL_USER}'@'localhost' IDENTIFIED BY '${SQL_USER_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON '${SQL_DATABASE}'.* TO '${SQL_USER}'@'%';"
-refresh
+#refresh
 mysql -e "FLUSH PRIVILEGES;"
 
 
