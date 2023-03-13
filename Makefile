@@ -2,14 +2,11 @@ NAME	= inception
 
 FILE	= srcs/docker-compose.yml
 
-DOCC	= sudo docker compose -f
+DOCC	= sudo docker-compose -f
 
-all:	run
-
-run:
-		sudo mkdir -p /home/fox/data
-		sudo mkdir -p /home/fox/data/wp_data
-		sudo mkdir -p /home/fox/data/mariadb_data
+all:
+		mkdir -p /home/fleitz/data/mariadb
+		mkdir -p /home/fleitz/data/wordpress
 		${DOCC} ${FILE} up -d --build
 
 start:
@@ -19,14 +16,13 @@ stop:
 		${DOCC} ${FILE} stop
 
 status:
-		${DOCC} ${FILE} status
+		${DOCC} ${FILE} ps
 
 clean:
 		${DOCC} ${FILE} down -v
-		docker rmi -f nginx wordpress mariadb_data
 
 fclean:	clean
-		sudo rm -rf /home/fox/data
+		sudo rm -rf /home/fleitz/data/
 
 re:		fclean all
 

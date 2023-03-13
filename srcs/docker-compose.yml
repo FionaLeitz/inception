@@ -19,8 +19,8 @@ services:
     container_name: mariadb
     networks:
       - inception
-    image: mysql:5.7
-        #build: requirements/mariadb
+    # image: mysql:5.7
+    build: requirements/mariadb
     env_file: .env
     restart: on-failure
     ports:
@@ -48,13 +48,13 @@ volumes:
     name: wordpress
     driver_opts:
       type: volume
-      device: /home/fox/data/wordpress
+      device: /home/fleitz/data/wordpress
       o: bind
-  mariadb_data:
+  mariadb:
     name: mariadb
     driver_opts:
       type: volume
-      device: /home/fox/data/mariadb
+      device: /home/fleitz/data/mariadb
       o: bind
 
 networks:
