@@ -13,25 +13,27 @@ services:
     ports:
       - 443:443
     volumes:
-      - wp_data:/var/www/html
+      - wordpress:/var/www/html
 
   mariadb:
     container_name: mariadb
     networks:
       - inception
-    build: requirements/mariadb
+    image: mysql:5.7
+        #build: requirements/mariadb
     env_file: .env
     restart: on-failure
     ports:
       - 3306:3306
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - mariadb:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
     networks:
       - inception
-    build: requirements/wordpress
+    image: wordpress:latest
+        #build: requirements/wordpress
     depends_on:
       - mariadb
     env_file: .env
@@ -39,20 +41,20 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - wp_data:/var/www/html
+      - wordpress:/var/www/html
 
 volumes:
-  wp_data:
-    name: wp_data
+  wordpress:
+    name: wordpress
     driver_opts:
       type: volume
-      device: /home/fox/data/wp_data
+      device: /home/fox/data/wordpress
       o: bind
   mariadb_data:
-    name: mariadb_data
+    name: mariadb
     driver_opts:
       type: volume
-      device: /home/fox/data/mariadb_data
+      device: /home/fox/data/mariadb
       o: bind
 
 networks:
