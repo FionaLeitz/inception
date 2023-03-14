@@ -32,8 +32,8 @@ services:
     container_name: wordpress
     networks:
       - inception
-    image: wordpress:latest
-        #build: requirements/wordpress
+    # image: wordpress:latest
+    build: requirements/wordpress
     depends_on:
       - mariadb
     env_file: .env
