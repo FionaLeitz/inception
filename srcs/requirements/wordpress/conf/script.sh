@@ -22,14 +22,15 @@ if [ ! -f /var/www/html/wp-config.php ]; then
                                 --admin_user=${MYSQL_ADMIN} \
                                 --admin_password=${MYSQL_ADMIN_PASSWORD} \
                                 --admin_email=${MYSQL_ADMIN_MAIL} \
-                                --skip_email \
+                                --skip-email \
                                 --allow-root
 
                         wp user create ${MYSQL_USER} \
-                                ${MYSQL_USER_MAIL} \ 
+                                ${MYSQL_USER_MAIL} \
+                                --allow-root \
                                 --role=author \
-                                --user_pass=${MYSQL_USER_PASSWORD} \
-                                --allow-root
+                                --user_pass=${MYSQL_USER_PASSWORD}
+
 fi
 
 php-fpm7.3 -F -R
