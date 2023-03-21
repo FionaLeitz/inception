@@ -5,8 +5,8 @@ FILE	= srcs/docker-compose.yml
 DOCC	= sudo docker-compose -f
 
 all:
-		mkdir -p /home/fleitz/data/mariadb
-		mkdir -p /home/fleitz/data/wordpress
+		mkdir -p /home/fleitz/data/mariadb_data
+		mkdir -p /home/fleitz/data/wordpress_data
 		${DOCC} ${FILE} up -d --build
 
 start:

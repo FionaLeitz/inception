@@ -1,8 +1,3 @@
-# on devrait attendre un peu pour etre sur
-# que la base de donnees MariaDB soit lancee
-# puis faire la suite seulement si wp-config.php n'existe pas
-# sinon faut tout le temps recommencer
-
 if [ ! -f /var/www/html/wp-config.php ]; then
         until mysqladmin -hmariadb -u${MYSQL_USER} -p${MYSQL_USER_PASSWORD} ping; do
                 sleep 2
