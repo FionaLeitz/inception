@@ -13,7 +13,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
 
   mariadb:
     container_name: mariadb
@@ -25,7 +25,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - mariadb:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
 
   wordpress:
     container_name: wordpress
@@ -39,20 +39,20 @@ services:
     ports:
       - 9000:9000
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
 
 volumes:
-  wordpress:
-    name: wordpress
+  wordpress_data:
+    name: wordpress_data
     driver_opts:
       type: volume
-      device: /home/fleitz/data/wordpress
+      device: /home/fleitz/data/wordpress_data
       o: bind
-  mariadb:
-    name: mariadb
+  mariadb_data:
+    name: mariadb_data
     driver_opts:
       type: volume
-      device: /home/fleitz/data/mariadb
+      device: /home/fleitz/data/mariadb_data
       o: bind
 
 networks:
