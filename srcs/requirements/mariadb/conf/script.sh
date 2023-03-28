@@ -12,7 +12,7 @@ if [ ! -d /var/lib/mysql/${MYSQL_DATABASE} ]; then
     mysql -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
 
 #create admin user
-    mysql -e "CREATE USER '${SQL_ADMIN}'@'%' IDENTIFIED BY '${MYSQL_ADMIN_PASSWORD}';"
+    mysql -e "CREATE USER '${MYSQL_ADMIN}'@'%' IDENTIFIED BY '${MYSQL_ADMIN_PASSWORD}';"
     mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_ADMIN}'@'%';"
 #refresh
     mysql -e "FLUSH PRIVILEGES;"

@@ -19,7 +19,6 @@ services:
     container_name: mariadb
     networks:
       - inception
-    # image: mysql:5.7
     build: requirements/mariadb
     env_file: .env
     restart: on-failure
@@ -32,7 +31,6 @@ services:
     container_name: wordpress
     networks:
       - inception
-    # image: wordpress:latest
     build: requirements/wordpress
     depends_on:
       - mariadb
