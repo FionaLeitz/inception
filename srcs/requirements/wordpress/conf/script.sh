@@ -10,7 +10,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
                         --dbcharset="utf8" \
                         --dbcollate="utf8_general_ci" \
                         --allow-root
-                        # --path='var/www/wordpress'
 
                         wp core install --url=fleitz.42.fr \
                                 --title=${WP_TITLE} \
