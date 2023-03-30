@@ -13,5 +13,3 @@ COPY ./conf/script.sh .
 EXPOSE 3306
 
 ENTRYPOINT ./script.sh
-
-#CMD bash script.sh
