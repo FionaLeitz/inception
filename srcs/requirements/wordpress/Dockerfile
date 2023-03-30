@@ -21,4 +21,6 @@ COPY ./conf/script.sh /etc/
 
 EXPOSE 9000
 
-CMD ["bash", "/etc/script.sh"]
+ENTRYPOINT ./etc/script.sh
+
+#CMD ["bash", "/etc/script.sh"]
